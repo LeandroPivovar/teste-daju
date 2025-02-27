@@ -1,10 +1,10 @@
 import fastify from 'fastify';
+import { RefoundController } from './controllers/RefoundController.ts';
 
 const app = fastify();
+const refoundController = new RefoundController();
 
-app.get('/', async () => {
-  return { hello: 'world' };
-});
+app.get('/refound', (req, res) => refoundController.get(req, res));
 
 const start = async () => {
   try {
