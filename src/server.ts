@@ -1,15 +1,14 @@
 import fastify from 'fastify';
-import { RefoundController } from './controllers/RefoundController.ts';
+import { refoundRoutes } from './Routes/refoundRoutes.ts';
 
 const app = fastify();
-const refoundController = new RefoundController();
 
-app.get('/refound', (req, res) => refoundController.get(req, res));
+app.register(refoundRoutes)
 
 const start = async () => {
   try {
     await app.listen({ port: 3010 });
-    console.log('Server running at http://localhost:3010');
+    console.log('🚀 Server is Running!');
   } catch (err) {
     console.error(err);
     process.exit(1);
